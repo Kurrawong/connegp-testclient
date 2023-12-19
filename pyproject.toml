@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "test"
+name = "connegp-testclient"
 version = "0.1.0"
-description = ""
+description = "test client for content negotiation by profile implementations"
 authors = ["Lawson Lewis <lawson@kurrawong.ai>"]
 readme = "README.md"
 
@@ -9,7 +9,6 @@ readme = "README.md"
 python = "^3.11"
 connegp = "^0.2"
 requests = "^2.31.0"
-colorama = "^0.4.6"
 
 
 [build-system]
