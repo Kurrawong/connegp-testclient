@@ -50,17 +50,18 @@ class ConnegpTestClient:
         return r.status_code
 
     def run_tests(self):
-        results = []
+        results = {}
         # TODO: expand to test all endpoints
         endpoints = [ep for ep in self.endpoints if "{" not in ep]
         for endpoint in endpoints:
+            results[endpoint] = []
             pmts = self._get_pmts_for_endpoint(endpoint)
             if len(pmts) < 1:
-                results.append([endpoint, "no pmts returned"])
+                results[endpoint].append("no pmts returned")
             else:
                 for pmt in pmts:
-                    status = self._test_pmt_for_endpoint(endpoint, pmt)
-                    results.append([endpoint, pmt, status])
+                    pmt['status'] = self._test_pmt_for_endpoint(endpoint, pmt)
+                    results[endpoint].append(pmt)
         return results
 
 
